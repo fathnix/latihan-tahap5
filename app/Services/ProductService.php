@@ -6,27 +6,27 @@ use App\Repositories\Interface\ProductRepository;
 class ProductService{
     protected $productRepo;
 
-    public function __construct(ProductService $productService)
+    public function __construct(ProductRepository $productRepo)
     {
-        $this->productRepo = $productService;
+        $this->productRepo = $productRepo;
     }
 
     public function createProduct(array $data){
         
-        $product = $this->productRepo->createProduct($data);
+        $product = $this->productRepo->create($data);
         return $product;
     }
 
     public function getProduct(string $id){
-        return $this->productRepo->getProduct($id);
+        return $this->productRepo->getById($id);
     }
 
     public function updateProduct(string $id, array $data){
-        return $this->productRepo->updateProduct($id, $data);
+        return $this->productRepo->update($id, $data);
     }
 
     public function deleteProduct(string $id){
-        return $this->productRepo->deleteProduct($id);
+        return $this->productRepo->delete($id);
     }
 
       
