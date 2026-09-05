@@ -3,8 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'jumlah', 'deskripsi'];
+    protected $fillable = ['name', 'jumlah', 'kategori_id', 'deskripsi'];
+
+    public function category() : BelongsTo {
+        return $this->belongsTo(Category::class, 'kategori_id');
+    }
 }
