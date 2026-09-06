@@ -3,13 +3,16 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Repositories\Interface\CategoryRepository;
+use Illuminate\Support\Facades\Cache;
 use Override;
 
 class CategoryRepoImplements implements CategoryRepository{
     #[Override]
     public function getAll()
     {
-        return Category::all();
+        return Cache::remember('all_categories', 120, function(){
+            return Category::all()->toArray();
+        });
     }
 
     #[Override]
