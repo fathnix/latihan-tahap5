@@ -7,7 +7,7 @@ class CategoryService{
 
     public function __construct(CategoryRepository $katRepo)
     {
-        return $this->katRepo = $katRepo;
+        $this->katRepo = $katRepo;
     }
 
     public function getKat(){
