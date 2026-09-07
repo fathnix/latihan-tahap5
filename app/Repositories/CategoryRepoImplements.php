@@ -18,7 +18,7 @@ class CategoryRepoImplements implements CategoryRepository{
     #[Override]
     public function getById(string $id)
     {
-        return Category::findOrFail($id);
+        return Category::findOrFail($id);   
     }
 
     #[Override]
